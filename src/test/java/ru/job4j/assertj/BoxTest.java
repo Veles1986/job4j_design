@@ -39,25 +39,25 @@ class BoxTest {
     }
 
     @Test
-    void IfSphereEdgeIs6ThenArea452Dot39() {
+    void ifSphereEdgeIs6ThenArea452Dot39() {
         Box box = new Box(0, 6);
         assertThat(box.getArea()).isEqualTo(452.39d, withPrecision(0.01d));
     }
 
     @Test
-    void IfTetrahedronEdgeIs7ThenArea84Dot87() {
+    void ifTetrahedronEdgeIs7ThenArea84Dot87() {
         Box box = new Box(4, 7);
         assertThat(box.getArea()).isEqualTo(84.87d, withPrecision(0.01d));
     }
 
     @Test
-    void IfCubeEdgeIs9ThenArea486() {
+    void ifCubeEdgeIs9ThenArea486() {
         Box box = new Box(8, 9);
         assertThat(box.getArea()).isEqualTo(486d);
     }
 
     @Test
-    void IfUnknownObjectThenArea0() {
+    void ifUnknownObjectThenArea0() {
         Box box = new Box(3, 10);
         assertThat(box.getArea()).isEqualTo(0);
     }
