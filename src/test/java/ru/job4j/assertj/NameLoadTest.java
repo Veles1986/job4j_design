@@ -25,7 +25,7 @@ class NameLoadTest {
     @Test
     void checkStartsWithEqual() {
         NameLoad nameLoad = new NameLoad();
-        String word = "=arseniypetrov";
+        String word = "=arseniy";
         assertThatThrownBy(() -> nameLoad.parse(word))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(word)
