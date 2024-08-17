@@ -10,7 +10,7 @@ class SimpleCollectionTest {
         assertThat(simpleCollection).isNotEmpty()
                 .hasSize(5)
                 .contains(1, 5, 4)
-                .containsOnly(1, 5, 4 , 3)
+                .containsOnly(1, 5, 4, 3)
                 .containsExactly(1, 1, 3, 4, 5)
                 .containsExactlyInAnyOrder(5, 1, 4, 3, 1)
                 .containsAnyOf(200, 100, 3)
