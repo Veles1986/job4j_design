@@ -15,24 +15,30 @@ class NameLoadTest {
     @Test
     void checkNotContainsEqual() {
         NameLoad nameLoad = new NameLoad();
-        assertThatThrownBy(() -> nameLoad.parse("senyaarseniy", "grishagrigoriy"))
+        String word = "senyaarseniy";
+        assertThatThrownBy(() -> nameLoad.parse(word))
                 .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(word)
                 .hasMessageContaining("the symbol '='");
     }
 
     @Test
     void checkStartsWithEqual() {
         NameLoad nameLoad = new NameLoad();
-        assertThatThrownBy(() -> nameLoad.parse("=arseniy", "grisha=grigoriy"))
+        String word = "=arseniy";
+        assertThatThrownBy(() -> nameLoad.parse(word))
                 .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(word)
                 .hasMessageContaining("a key");
     }
 
     @Test
     void checkEndsWithEqual() {
         NameLoad nameLoad = new NameLoad();
-        assertThatThrownBy(() -> nameLoad.parse("senya=arseniy", "grisha="))
+        String word = "senya=";
+        assertThatThrownBy(() -> nameLoad.parse(word))
                 .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(word)
                 .hasMessageContaining("a value");
     }
 
