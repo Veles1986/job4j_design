@@ -60,7 +60,7 @@ class SimpleArrayListTest {
     }
 
     @Test
-    void whenAndAndGetByIncorrectIndexThenGetException() {
+    void whenAddAndGetByIncorrectIndexThenGetException() {
         SimpleList<Integer> list = new SimpleArrayList<>(10);
         list.add(5);
         assertThatThrownBy(() -> list.get(5))
