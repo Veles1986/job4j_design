@@ -12,21 +12,32 @@ public class ForwardLinked<E> implements Iterable<E> {
 
     public void add(E value) {
         if (size == 0) {
-            head = new ForwardLinked.Node<>(value, null);
+            head = new Node<>(value, null);
         } else {
-            ForwardLinked.Node<E> newNode = head;
+            Node<E> newNode = head;
             while (newNode.next != null) {
                 newNode = newNode.next;
             }
-            newNode.next = new ForwardLinked.Node<>(value, null);
+            newNode.next = new Node<>(value, null);
         }
         size++;
         modCount++;
     }
 
+    public void addFirst(E value) {
+        if (size == 0) {
+            add(value);
+        } else {
+            Node<E> newNode = head;
+            head = new Node<>(value, newNode);
+            size++;
+            modCount++;
+        }
+    }
+
     public E get(int index) {
         Objects.checkIndex(index, size);
-        ForwardLinked.Node<E> newNode = head;
+        Node<E> newNode = head;
         for (int i = 1; i <= index; i++) {
             newNode = newNode.next;
         }
@@ -40,6 +51,7 @@ public class ForwardLinked<E> implements Iterable<E> {
         E obj = head.item;
         head.item = null;
         head = head.next;
+        size--;
         return obj;
     }
 
@@ -47,8 +59,8 @@ public class ForwardLinked<E> implements Iterable<E> {
     public Iterator<E> iterator() {
         final int modCountStatic = modCount;
         return new Iterator<E>() {
-            ForwardLinked.Node<E> newNode = head;
-            ForwardLinked.Node<E> helpNode;
+            Node<E> newNode = head;
+            Node<E> helpNode;
             @Override
             public boolean hasNext() {
                 if (modCount != modCountStatic) {
@@ -71,9 +83,9 @@ public class ForwardLinked<E> implements Iterable<E> {
 
     private static class Node<E> {
         private E item;
-        private ForwardLinked.Node<E> next;
+        private Node<E> next;
 
-        Node(E element, ForwardLinked.Node<E> next) {
+        Node(E element, Node<E> next) {
             this.item = element;
             this.next = next;
         }
