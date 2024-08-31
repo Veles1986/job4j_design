@@ -45,13 +45,14 @@ public class ForwardLinked<E> implements Iterable<E> {
     }
 
     public E deleteFirst() {
-        if (head == null) {
+        if (size == 0) {
             throw new NoSuchElementException();
         }
         E obj = head.item;
         head.item = null;
         head = head.next;
         size--;
+        modCount++;
         return obj;
     }
 
