@@ -33,14 +33,13 @@ public class ListUtils {
             if (filter.test(iterator.next())) {
                 iterator.set(value);
             }
+            iterator.next();
         }
     }
 
     public static <T> void removeAll(List<T> list, List<T> elements) {
-        ListIterator<T> elementIterator = elements.listIterator();
-        while (elementIterator.hasNext()) {
-            ListUtils.removeIf(list, a -> a == elements.get(elementIterator.nextIndex()));
-            elementIterator.next();
+        for (T element : elements) {
+            ListUtils.removeIf(list, a -> a == element);
         }
     }
 }
