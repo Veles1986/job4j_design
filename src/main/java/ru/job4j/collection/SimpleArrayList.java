@@ -60,7 +60,6 @@ public class SimpleArrayList<T> implements SimpleList<T> {
 
         return new Iterator<T>() {
             int cursor = 0;
-
             @Override
             public boolean hasNext() {
                 if (check != modCount) {
