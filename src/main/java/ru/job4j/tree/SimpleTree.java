@@ -27,7 +27,7 @@ public class SimpleTree<E> implements Tree<E> {
 
     @Override
     public Optional<Node<E>> findBy(E value) {
-        return findByPredicate(i -> i.value == value);
+        return findByPredicate(i -> Objects.equals(i.value, value));
     }
 
     private Optional<Node<E>> findByPredicate(Predicate<Node<E>> condition) {
