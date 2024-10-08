@@ -45,4 +45,11 @@ class ConfigTest {
         config.load();
         assertThat(config.value("hibernate.connection.username")).isEqualTo("postgres");
     }
+
+    @Test
+    void whenPairWithoutKey() {
+        String path = "./data/app5.properties";
+        Config config = new Config(path);
+        assertThatThrownBy(config::load).isInstanceOf(IllegalArgumentException.class);
+    }
 }
