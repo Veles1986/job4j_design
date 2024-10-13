@@ -11,8 +11,8 @@ import java.util.function.Predicate;
 
 public class SearchFiles extends SimpleFileVisitor<Path> {
 
-    Predicate predicate;
-    List<Path> listOfPaths = new ArrayList<>();
+    private Predicate predicate;
+    private List<Path> listOfPaths = new ArrayList<>();
 
     SearchFiles(Predicate predicate) {
         this.predicate = predicate;
