@@ -1,0 +1,24 @@
+User: Hello
+
+Bot: I'm fine
+
+User: как
+
+Bot: Hello.
+
+User: СтоП
+
+User: пропр
+
+User: варовра
+
+User: jhfjghd
+
+User: ПроДолжИть
+
+User: hgjhf
+
+Bot: Hello.
+
+User: ЗАкончить
+
