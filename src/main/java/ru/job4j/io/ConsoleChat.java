@@ -21,6 +21,7 @@ public class ConsoleChat {
         boolean checkExit = true;
         boolean checkWait = true;
         List<String> logSave = new ArrayList<>();
+        List<String> listOfAnswers = readPhrases();
         while (checkExit) {
             Scanner scanner = new Scanner(System.in);
             String input = scanner.next();
@@ -37,7 +38,6 @@ public class ConsoleChat {
                 }
                 default -> {
                     if (checkWait) {
-                        List<String> listOfAnswers = readPhrases();
                         String answer = listOfAnswers.get((int) Math.floor(Math.random() * listOfAnswers.size()));
                         logSave.add("Bot: " + answer + "\n");
                         System.out.println(answer);

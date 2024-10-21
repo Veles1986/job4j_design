@@ -1,24 +1,20 @@
-User: Hello
+User: Привет
 
-Bot: I'm fine
+Bot: No.
 
-User: как
+User: Как
 
-Bot: Hello.
+Bot: Wtf?
 
-User: СтоП
-
-User: пропр
-
-User: варовра
-
-User: jhfjghd
-
-User: ПроДолжИть
-
-User: hgjhf
+User: ЧТо?
 
 Bot: Hello.
 
-User: ЗАкончить
+User: Стоп
+
+User: арпор
+
+User: Пропро
+
+User: Закончить
 
