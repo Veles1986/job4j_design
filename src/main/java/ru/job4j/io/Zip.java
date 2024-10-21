@@ -32,13 +32,24 @@ public class Zip {
         }
     }
 
+    private ArgsName validate(String[] args) {
+        ArgsName argsName = ArgsName.of(args);
+        if (argsName.get("d").isEmpty() || argsName.get("e").isEmpty() || argsName.get("o").isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+        if (!"zip".equals(argsName.get("o").split("\\.")[1])) {
+            throw new IllegalArgumentException("The destination file must be in zip format");
+        }
+        return argsName;
+    }
+
     public static void main(String[] args) throws IOException {
         Zip zip = new Zip();
         zip.packSingleFile(
                 new File("./pom.xml"),
                 new File("./pom.zip")
         );
-        ArgsName editedArgs = ArgsName.of(args);
+        ArgsName editedArgs = zip.validate(args);
         zip.packFiles(
                 Search.search(
                         Path.of(editedArgs.get("d")),
