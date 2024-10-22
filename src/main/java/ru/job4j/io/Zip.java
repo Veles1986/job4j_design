@@ -34,8 +34,11 @@ public class Zip {
 
     private ArgsName validate(String[] args) {
         ArgsName argsName = ArgsName.of(args);
-        if (argsName.get("d").isEmpty() || argsName.get("e").isEmpty() || argsName.get("o").isEmpty()) {
-            throw new IllegalArgumentException();
+        if (!Path.of(argsName.get("d")).isAbsolute()) {
+            throw new IllegalArgumentException("Invalid path");
+        }
+        if (!argsName.get("e").startsWith(".")) {
+            throw new IllegalArgumentException("Illegal format of files that are not archived");
         }
         if (!"zip".equals(argsName.get("o").split("\\.")[1])) {
             throw new IllegalArgumentException("The destination file must be in zip format");
