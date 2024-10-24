@@ -8,7 +8,6 @@ import java.nio.file.Path;
 import java.nio.file.Files;
 
 class CSVReaderTest {
-
     @Test
     void whenFilterTwoColumns(@TempDir Path folder) throws Exception {
         String data = String.join(
