@@ -35,7 +35,7 @@ public class CSVReader {
         } else {
             try (PrintWriter writer = new PrintWriter(destination.toString())) {
                 for (List<String> strings : result) {
-                    writer.printf("%s%n", getString(strings, delimiter));
+                    writer.println(getString(strings, delimiter));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
