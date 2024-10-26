@@ -11,7 +11,7 @@ public class CSVReader {
         Path destination = argsName.get("out").equals("stdout") ? null : Path.of(argsName.get("out"));
         List<String> column = List.of(argsName.get("filter").split(","));
         List<List<String>> result = new ArrayList<>();
-        try (Scanner input = new Scanner(source).useDelimiter("\r")) {
+        try (Scanner input = new Scanner(source).useDelimiter(System.lineSeparator())) {
             String[] line = input.next().split(delimiter);
             List<Integer> numbers = new LinkedList<>();
             List<String> helpList = List.of(line);
