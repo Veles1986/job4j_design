@@ -16,6 +16,7 @@ public class UsageLog4j {
         char bloodGroup = '1';
         byte numberOfChildren = 4;
         long numberOfFollowers = 12000000L;
-        LOG.debug("User info name : {}, age : {}, height : {}, capital : {}, isMarried : {}, bloodGroup : {}, numberOfChildren : {}, numberOfFollowers : {}", name, age, height, capital, isMarried, bloodGroup, numberOfChildren, numberOfFollowers);
+        short totalNumberOFStudents = 10000;
+        LOG.debug("User info name : {}, age : {}, height : {}, capital : {}, isMarried : {}, bloodGroup : {}, numberOfChildren : {}, numberOfFollowers : {}, totalNumberOfStudents : {}", name, age, height, capital, isMarried, bloodGroup, numberOfChildren, numberOfFollowers, totalNumberOFStudents);
     }
 }
