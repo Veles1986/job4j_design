@@ -15,10 +15,11 @@ public class EchoServer {
                              new InputStreamReader(socket.getInputStream()))) {
                     output.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
                     Pattern pattern = Pattern.compile("msg=Bye");
-                    for (String string = input.readLine(); string != null && !string.isEmpty(); string = input.readLine()) {
-                        if (pattern.matcher(string).find()) {
-                            server.close();
-                        }
+                    String string = input.readLine();
+                    if (pattern.matcher(string).find()) {
+                        server.close();
+                    }
+                    for (string = input.readLine(); string != null && !string.isEmpty(); string = input.readLine()) {
                         System.out.println(string);
                     }
                     output.flush();
