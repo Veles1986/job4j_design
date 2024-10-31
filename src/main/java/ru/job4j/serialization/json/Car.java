@@ -1,12 +1,25 @@
 package ru.job4j.serialization.json;
 
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.annotation.*;
+
+import java.io.StringWriter;
 import java.util.Arrays;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Car {
+    @XmlAttribute
     private String model;
+    @XmlAttribute
     private int yearOfManufacture;
+    @XmlAttribute
     private boolean forSale;
     private Engine engine;
+    @XmlElementWrapper(name = "owners")
+    @XmlElement(name = "owners")
     private String[] owners;
 
     public Car(String model, int yearOfManufacture, boolean forSale, Engine engine, String[] owners) {
@@ -17,20 +30,7 @@ public class Car {
         this.owners = owners;
     }
 
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public int getYearOfManufacture() {
-        return yearOfManufacture;
-    }
-
-    public void setYearOfManufacture(int yearOfManufacture) {
-        this.yearOfManufacture = yearOfManufacture;
+    public Car() {
     }
 
     @Override
@@ -44,27 +44,26 @@ public class Car {
                 + '}';
     }
 
-    public boolean isForSale() {
-        return forSale;
-    }
+    public static void main(String[] args) throws JAXBException {
+        final Car car = new Car(
+                "Porsche 911",
+                2020,
+                false,
+                new Engine(6, 525F),
+                new String[]{"James", "Cameron"}
+        );
 
-    public void setForSale(boolean forSale) {
-        this.forSale = forSale;
-    }
+        JAXBContext context = JAXBContext.newInstance(Car.class);
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
-    public Engine getEngine() {
-        return engine;
-    }
+        try (StringWriter stringWriter = new StringWriter()) {
+            marshaller.marshal(car, stringWriter);
+            String result = stringWriter.getBuffer().toString();
+            System.out.println(result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-    public void setEngine(Engine engine) {
-        this.engine = engine;
-    }
-
-    public String[] getOwners() {
-        return owners;
-    }
-
-    public void setOwners(String[] owners) {
-        this.owners = owners;
     }
 }
