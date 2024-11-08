@@ -34,7 +34,8 @@ create table Items(
 	id serial primary key,
 	itemText text,
 	categories_id int references Categories(id),
-	states_id int references States(id)
+	states_id int references States(id),
+	users_id int references Users(id)
 );
 
 
@@ -80,11 +81,15 @@ INSERT into Users(username, role_id) values
 	('user2', 1),
 	('user3', 2);
 
-INSERT into Items(itemText, categories_id, states_id) values
-	('Помогите !!!', 1, 1),
-	('Помогите !!!', 2, 1),
-	('Помогите !!!', 1, 2),
-	('Помогите !!!', 2, 2);
+INSERT into Items(itemText, categories_id, states_id, users_id) values
+	('Помогите !!!', 1, 1, 1),
+	('Помогите !!!', 1, 1, 2),
+	('Помогите !!!', 2, 1, 1),
+	('Помогите !!!', 2, 1, 2),
+	('Помогите !!!', 1, 2, 1),
+	('Помогите !!!', 1, 2, 2),
+	('Помогите !!!', 2, 2, 1),
+	('Помогите !!!', 2, 2, 2);
 
 INSERT into Comments(commentText, item_id) values
 	('Комментарий 1', 1),
