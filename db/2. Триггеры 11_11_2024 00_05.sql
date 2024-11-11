@@ -29,7 +29,7 @@ $$
     update products
     set price = price * 1.15
     where id = new.id;
-    return new;
+    return row;
   END;
 $$
 LANGUAGE 'plpgsql';
