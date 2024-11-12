@@ -26,10 +26,8 @@ or replace function tax_before()
 returns trigger as
 $$
   BEGIN
-    update products
-    set price = price * 1.15
-    where id = new.id;
-    return row;
+    new.price := new.price * 1.15;
+    return new;
   END;
 $$
 LANGUAGE 'plpgsql';
