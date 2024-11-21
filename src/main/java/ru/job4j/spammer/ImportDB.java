@@ -25,8 +25,8 @@ public class ImportDB {
             for (String line : reader.lines().toList()) {
                 String[] arguments = line.split(";");
                 if (arguments.length != 2
-                        || "".equals(arguments[1])
-                        || "".equals(arguments[0])) {
+                        || arguments[1].isBlank()
+                        || arguments[0].isBlank()) {
                     throw new IllegalArgumentException();
                 }
                 users.add(new User(arguments[0], arguments[1]));
