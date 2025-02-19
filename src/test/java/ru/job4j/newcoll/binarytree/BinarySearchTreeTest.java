@@ -109,4 +109,24 @@ class BinarySearchTreeTest {
                 .containsExactly(2, 1, 11, 6, 4, 3, 5, 8, 7, 9, 14, 12, 13, 16, 15, 17);
     }
 
+    @Test
+    void whenClearRootThenOk() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        for (int i : new int[]{2, 1, 10, 6, 14, 4, 8, 12, 16, 11, 9, 13, 15, 17, 3, 5, 7}) {
+            tree.put(i);
+        }
+        tree.clear();
+        assertThat(tree.inPostOrder()).isEmpty();
+    }
+
+    @Test
+    void whenClearChild14ThenOk() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        for (int i : new int[]{2, 1, 10, 6, 14, 4, 8, 12, 16, 11, 9, 13, 15, 17, 3, 5, 7}) {
+            tree.put(i);
+        }
+        tree.removeSubtree(14);
+        assertThat(tree.inPostOrder()).hasSize(10)
+                .containsExactly(1, 3, 5, 4, 7, 9, 8, 6, 10, 2);
+    }
 }
